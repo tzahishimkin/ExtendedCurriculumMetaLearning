@@ -11,7 +11,7 @@ from Utils.data_gen import Task_Generator
 from Utils.common import write_to_log, set_random_seed, create_result_dir, save_run_data
 from Data_Path import get_data_path
 
-torch.backends.cudnn.benchmark = True # For speed improvement with convnets with fixed-length inputs - https://discuss.pytorch.org/t/pytorch-performance/3079/7
+#torch.backends.cudnn.benchmark = True # For speed improvement with convnets with fixed-length inputs - https://discuss.pytorch.org/t/pytorch-performance/3079/7
 
 
 # -------------------------------------------------------------------------------------------

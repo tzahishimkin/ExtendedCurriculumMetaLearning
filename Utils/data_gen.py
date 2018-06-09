@@ -11,6 +11,8 @@ from Utils import omniglot
 from Utils import imagenet_data
 
 import matplotlib.pyplot as plt
+from Utils import config
+
 
 # -------------------------------------------------------------------------------------------
 #  Task generator class
@@ -218,7 +220,8 @@ def get_info(prm):
 def get_batch_vars(batch_data, args, is_test=False):
     ''' Transform batch to variables '''
     inputs, targets = batch_data
-    inputs, targets = inputs.cuda(), targets.cuda(async=True)
+    if config.USE_GPU:
+        inputs, targets = inputs.cuda(), targets.cuda(async=True)
     inputs, targets = Variable(inputs, volatile=is_test), Variable(targets, volatile=is_test)
     return inputs, targets
 

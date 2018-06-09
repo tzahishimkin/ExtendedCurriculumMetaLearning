@@ -9,6 +9,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 from Utils import data_gen
+from Utils import config
 from Models.layer_inits import init_layers
 # -------------------------------------------------------------------------------------------
 # Main function
@@ -105,7 +106,8 @@ class FcNet3(base_model):
                 ]))
         # Initialize weights
         self._init_weights()
-        self.cuda()  # always use GPU
+        if config.USE_GPU:
+            self.cuda()
 
     def forward(self, x, weights=None):
         ''' Define what happens to data in the net '''
@@ -150,7 +152,8 @@ class ConvNet3(base_model):
 
         # Initialize weights
         self._init_weights()
-        self.cuda()  # always use GPU
+        if config.USE_GPU:
+            self.cuda()
 
     def _forward_conv_layers(self, x, weights=None):
         if weights is None:
@@ -210,7 +213,8 @@ class OmConvNet(base_model):
 
         # Initialize weights
         self._init_weights()
-        self.cuda()  # always use GPU
+        if use_gpu:
+            self.cuda()  # always use GPU
 
     def _forward_conv_layers(self, x, weights=None):
         if weights is None:
